@@ -1,14 +1,12 @@
 .noteTextBox{
-   
-    height:500px;
+    height:600px;
     width:500px;
     position: absolute;
     top:100px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     background-color: rgb(44, 44, 44);
-    border-top: 1px solid rgb(165, 165, 165); 
+    gap:15px;
    
 }
 
@@ -21,21 +19,22 @@ label{
     text-align: center;
     background-color: rgb(44, 44, 44);
     display: flex;
-    margin-top: 20px;
-
+    height:80%;
+    width: 85%;
     border: 1px solid rgb(165, 165, 165);
-    border :4px solid gold;
+   
+  
 
 
 
 }
-input{
+input.comment-input {
     background-color: rgb(44, 44, 44);
     border:none;
     width:80%;
     border-radius: 30px;
-    height:80%;
-    font-size: 15px;
+    outline: none;
+    font-size: 17px;
     margin-left: 5px;
 
 
@@ -54,12 +53,33 @@ button {
 
 }
 .input-container{
-    border :4px solid rgb(0, 255, 55);  
+    margin-top: 10px;
+    height:15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
    
     
 }
+.comment-items{
+    border: 1px solid rgb(165, 165, 165);
+    height: 20%;
+    border-radius: 10px;
+    width: fit-content;
+    padding:15px;
 
+}
 .comments-container{
-    border :4px solid rgb(102, 0, 255);
-    height:250px;
+
+    height: 70%;
+    color:#fff;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    width: 85%;
+    margin:0 auto;
+
+    
+
 }

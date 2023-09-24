@@ -35,6 +35,7 @@ function NoteForm(){
     // console.log(new_note)
 
     await dispatch(NoteActions.createNoteThunk(new_note))
+    await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
     setContent("")
    
 
@@ -70,7 +71,7 @@ function NoteForm(){
        
             <div className="input-container"> 
             <label>
-            <input
+            <input className="comment-input"
             placeholder="Have something to say?"
             value={content}
             onChange={(e)=>setContent(e.target.value)}
@@ -84,8 +85,8 @@ function NoteForm(){
 
             <div className="comments-container">
             {values.map((comment,index)=>(
-                <div key={index} id={`item${index}`}>
-           
+                <div className="comment-items" key={index} id={`item${index}`}>
+          
                 {comment.content}
             </div>
             
