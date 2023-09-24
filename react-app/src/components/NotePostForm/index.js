@@ -70,14 +70,14 @@ function NoteForm(){
             <div className="noteTextBox">
        
             <div className="input-container"> 
-            <label>
+            <label id="label-form">
             <input className="comment-input"
             placeholder="Have something to say?"
             value={content}
             onChange={(e)=>setContent(e.target.value)}
         
             />
-            <button type="submit">Reply</button>
+            <button id="note-button" type="submit">Reply</button>
             </label>
             </div>
            

@@ -10,7 +10,7 @@
    
 }
 
-label{
+#label-form{
 
     /* border:0.8px solid  rgb(119, 119, 119); */
    
@@ -41,7 +41,7 @@ input.comment-input {
    
 }
 
-button {
+#note-button {
     background-color: rgb(44, 44, 44);
     border: 0px;
     width: 20%;
