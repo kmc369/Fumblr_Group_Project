@@ -67,7 +67,8 @@ function NoteForm(){
             <form onSubmit={handleSubmit}>
             
             <div className="noteTextBox">
-            <div>
+       
+            <div className="input-container"> 
             <label>
             <input
             placeholder="Have something to say?"
@@ -78,6 +79,7 @@ function NoteForm(){
             <button type="submit">Reply</button>
             </label>
             </div>
+           
         
 
             <div className="comments-container">
