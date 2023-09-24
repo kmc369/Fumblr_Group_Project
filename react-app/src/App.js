@@ -9,6 +9,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllNotes from "./components/GetAllNotes";
 import EditNote from "./components/EditNote";
+import 'font-awesome/css/font-awesome.min.css'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,21 +25,27 @@ function App() {
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
-          <Route exact path="/delete/note" >
-            <DeleteNote />
-          </Route>
+
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
+
+          <Route exact path="/delete/note" >
+            <DeleteNote />
+          </Route>
+
           <Route exact path="/notes/:note_id">
             <EditNote />
           </Route>
+
           <Route exact path="/post/:post_id/notes/get" >
             <GetAllNotes />
           </Route>
+
           <Route exact path="/post/:post_id/notes" >
             <NotePostForm />
           </Route>
+          
         </Switch>
       )}
     </>

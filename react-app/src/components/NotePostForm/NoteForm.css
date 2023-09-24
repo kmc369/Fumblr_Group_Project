@@ -6,9 +6,10 @@
     top:100px;
     display: flex;
     justify-content: center;
+    
     background-color: rgb(44, 44, 44);
     border-top: 1px solid rgb(165, 165, 165); 
-    /* flex-direction: row; */
+   
 }
 
 label{
@@ -34,7 +35,7 @@ input{
     width:80%;
     border-radius: 30px;
     height:80%;
-    font-size: 20px;
+    font-size: 15px;
     margin-left: 5px;
 
    
@@ -46,7 +47,7 @@ button {
     width: 20%;
     border-radius: 30px;
     height:90%;
-    font-size: 19px;
+    font-size: 15px;
     margin-right: 5px;
     
 

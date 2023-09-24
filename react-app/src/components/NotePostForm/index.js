@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
@@ -18,10 +18,10 @@ function NoteForm(){
     const {post_id} = useParams()
     const post_id_int = parseInt(post_id, 10);
     const [content,setContent] = useState("")
+    const [postComments,setPostComments] = useState({})
 
 
-
-const handleSubmit = async (e)=>{
+    const handleSubmit = async (e)=>{
     e.preventDefault();
     
   
@@ -40,40 +40,66 @@ const handleSubmit = async (e)=>{
 
 }
 
-
-
-
-return (
-    <>
-        <form onSubmit={handleSubmit}>
-        
-        <div className="noteTextBox">
-    
-        <label>
-        <input
-        placeholder="Have something to say?"
-        value={content}
-        onChange={(e)=>setContent(e.target.value)}
+    useEffect(()=>{
+        async function fetchData() {
+            const getCommentsOfPost = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
        
-        />
-        
+        setPostComments(getCommentsOfPost); 
+      }
+      fetchData();
+    }, [dispatch, post_id]);
+
+    const values= Object.values(postComments)
+    if(Object.values(postComments).length===0 ){
       
-  
-        <button type="submit">Reply</button>
-        </label>
-        </div>
+        return null
+      }
+
+    
+
+
+
+
+
+
+    return (
+        <>
+            <form onSubmit={handleSubmit}>
+            
+            <div className="noteTextBox">
+            <div>
+            <label>
+            <input
+            placeholder="Have something to say?"
+            value={content}
+            onChange={(e)=>setContent(e.target.value)}
+        
+            />
+            <button type="submit">Reply</button>
+            </label>
+            </div>
         
 
+            <div className="comments-container">
+            {values.map((comment,index)=>(
+                <div key={index} id={`item${index}`}>
+           
+                {comment.content}
+            </div>
+            
+            
+            ))}
+            </div>
+            </div>
+            </form>
         
-        </form>
-    
-    
-    
-    
-    
-    
-    </>
-)
+        
+        
+        
+        
+        
+        </>
+    )
 
 }
 
