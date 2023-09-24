@@ -38,9 +38,9 @@ function App() {
             <EditNote />
           </Route>
 
-          <Route exact path="/post/:post_id/notes/get" >
+          {/* <Route exact path="/post/:post_id/notes/get" >
             <GetAllNotes />
-          </Route>
+          </Route> */}
 
           <Route exact path="/post/:post_id/notes" >
             <NotePostForm />

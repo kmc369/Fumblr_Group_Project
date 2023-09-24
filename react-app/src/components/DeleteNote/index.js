@@ -4,9 +4,9 @@ import {useParams } from 'react-router-dom';
 import { useDispatch,useSelector } from "react-redux";
 import * as NoteActions from '../../store/note'
 
-function DeleteNote() {
+function DeleteNote(comment) {
 
-const DropdownItems  =["Reply", "Delete", "Edit"];
+const DropdownItems  =["Close","Delete","Edit"];
 const [open,setOpen] = useState(false)
 return (
     <>

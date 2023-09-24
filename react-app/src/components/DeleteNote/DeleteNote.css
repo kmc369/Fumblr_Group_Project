@@ -4,23 +4,21 @@ color:rgb(142, 141, 141);
 }
 
 .menu-trigger{
-    position:absolute ;
-    top:20px;
-    right:20px;
-   
+
     cursor: pointer;
+    width: fit-content; 
+    float: right;
+    margin-right: 20px;
+  
   
 }
 
 .dropdown-menu{
     box-shadow: 4px 3px 4px black;
-    position:absolute;
-    top:50px;
-    right:20px;
+  
     color: #fff;
     background-color: rgb(44, 44, 44);
     border-radius: 5px;
-    /* padding:10px 20px; */
     text-align: center;
     width:150px;
     font-family: Helvetica, sans-serif;
@@ -28,18 +26,23 @@ color:rgb(142, 141, 141);
 
 .dropdown-menu ul li{
     padding:10px 0;
+    /* text-align: center; */
     border-top: 1px solid rgba(242, 241, 241, 0.05);
 }
 
 .dropdown-menu.active{
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translate(-40px, 0);
     transition: var(--speed) ease;
     box-shadow: 5px 5px 5px 0px rgb(29, 29, 29);
     z-index: 4px;
     cursor: pointer;
 
+}
+
+#Close{
+    margin-left: 30px;
 }
 
 .dropdown-menu.inactive{
@@ -54,7 +57,8 @@ color:rgb(142, 141, 141);
 ul{
     list-style-type: none;
     padding: 0;
-    margin: 0
+    margin: 0;
+   
 }
 
 #Delete {
@@ -65,3 +69,6 @@ ul{
 .dropdownItem:hover {
     background-color: rgb(74, 74, 74);
   }
+
+
+

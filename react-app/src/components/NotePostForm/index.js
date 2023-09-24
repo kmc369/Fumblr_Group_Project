@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import {useParams } from 'react-router-dom'
 import * as NoteActions from '../../store/note'
 
-
+import DeleteNote from "../DeleteNote";
 
 import "./NoteForm.css"
 
@@ -82,17 +82,31 @@ function NoteForm(){
             </div>
            
         
-
+            <div className="manage-and-comment">
             <div className="comments-container">
-            {values.map((comment,index)=>(
+                {values.map((comment, index) => (
                 <div className="comment-items" key={index} id={`item${index}`}>
-          
-                {comment.content}
+                  
+                    {comment.content}
+                  
+                    
+
+                </div>
+                ))}
             </div>
-            
-            
-            ))}
+                <div className="manage-note">
+                {values.map((comment,index)=>(
+                    
+                    <DeleteNote comment={comment}/>
+                
+                ))}
+                </div>
             </div>
+
+
+
+
+
             </div>
             </form>
         
