@@ -45,17 +45,24 @@ const handleSubmit = async (e)=>{
 
 return (
     <>
-        <form onSubmit={handleSubmit}> 
+        <form onSubmit={handleSubmit}>
+        
         <div className="noteTextBox">
-        <textarea
+    
+        <label>
+        <input
         placeholder="Have something to say?"
         value={content}
         onChange={(e)=>setContent(e.target.value)}
+       
         />
+        
+      
+  
+        <button type="submit">Reply</button>
+        </label>
         </div>
-        <div className="submit_button">
-            <button type="submit">Reply</button>
-        </div>
+        
 
         
         </form>

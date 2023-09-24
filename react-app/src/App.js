@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import NotePostForm from "./components/NotePostForm"
+import DeleteNote from "./components/DeleteNote";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllNotes from "./components/GetAllNotes";
@@ -22,6 +23,9 @@ function App() {
         <Switch>
           <Route exact path="/login" >
             <LoginFormPage />
+          </Route>
+          <Route exact path="/delete/note" >
+            <DeleteNote />
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
