@@ -4,14 +4,14 @@ import { searchPostsThunk } from '../../store/search';
 import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchItem, setsearchItem] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
-    const posts = useSelector(state => state.posts);
+    const posts = useSelector(state => state.search.posts);
 
     const handleSearch = (e) => {
         e.preventDefault();
-        dispatch(searchPostsThunk(searchTerm));
+        dispatch(searchPostsThunk(searchItem));
     };
 
     const handlePostClick = (postId) => {
@@ -23,19 +23,20 @@ const SearchBar = () => {
             <form onSubmit={handleSearch}>
                 <input
                     type="text"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    value={searchItem}
+                    onChange={(e) => setsearchItem(e.target.value)}
                     placeholder="Search Fumblr"
                 />
                 <button type="submit">Search</button>
             </form>
-            <ul>
-                {posts.map(post => (
-                    <li key={post.id} onClick={() => handlePostClick(post.id)}>
-                        {post.content}
-                    </li>
+            <div>
+                {posts && posts.map(post => (
+                    <div key={post.id} onClick={() => handlePostClick(post.id)}>
+                        <h3>{post.title}</h3>
+                        <p>{post.text_content}</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

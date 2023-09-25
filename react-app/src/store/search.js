@@ -1,15 +1,20 @@
 // actions
 export const SEARCH_POSTS = 'SEARCH_POSTS';
 
+export const searchPosts = (posts) => ({
+    type: SEARCH_POSTS,
+    payload: posts,
+});
+
 //thunk
 
-export const searchPostsThunk = (searchTerm) => async dispatch => {
+export const searchPostsThunk = (searchItem) => async dispatch => {
     try {
-        const response = await fetch(`/api/search/${searchTerm}`);
+        const response = await fetch(`/api/search/${searchItem}`);
         const data = await response.json();
-        dispatch({ type: SEARCH_POSTS, payload: { posts: data.posts, error: null } });
+        dispatch(searchPosts(data.posts));
     } catch (error) {
-        dispatch({ type: SEARCH_POSTS, payload: { posts: [], error: error.message } });
+        console.error(error);
     }
 };
 
@@ -17,13 +22,15 @@ export const searchPostsThunk = (searchTerm) => async dispatch => {
 
 const initialState = {
     posts: [],
-    error: null,
 };
 
 const searchReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEARCH_POSTS:
-            return { ...state, ...action.payload };
+            return {
+                ...state,
+                posts: [...action.payload]
+            };
         default:
             return state;
     }

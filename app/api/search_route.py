@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, redirect
 from app.models import User, TextPost
+from sqlalchemy import or_
 
 search_bp = Blueprint('search', __name__)
 
@@ -17,20 +18,17 @@ def search_user_posts(user):
     return redirect(f'/api/text_posts/user_posts/{searched_user.id}')
 
 
-@search_bp.route("/<user>", methods=["GET"])
-def search_user_posts(user):
-    searched_user = User.query.filter(User.username.ilike(f"%{user}%")).first()
-    if searched_user is None:
-        # Return a JSON error with a 404 status code
-        return jsonify(error="User could not be found"), 404
+@search_bp.route("/<searchItem>", methods=["GET"])
+def search_posts(searchItem):
+    searched_post = TextPost.query.filter(or_(TextPost.title.ilike(
+        f"%{searchItem}%"), TextPost.text_content.ilike(f"%{searchItem}%"))).all()
+    if searched_post is None:
+        return jsonify(error="Post could not be found"), 404
 
-    user_posts = TextPost.query.filter(
-        TextPost.user_id == searched_user.id).all()
-    # Use list comprehension to build post_lists
-    post_lists = [post.to_dict() for post in user_posts]
+    post_lists = [post.to_dict() for post in searched_post]
 
     response_data = {
-        "username": searched_user.username,
+        "users": None,
         "posts": post_lists
     }
 

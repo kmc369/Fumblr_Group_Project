@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import GetAllNotes from "./components/GetAllNotes";
 import EditNote from "./components/EditNote";
 import LikeButton from "./components/Likes";
+import SearchBar from "./components/Search";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,8 +24,8 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-         
-          
+
+
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
@@ -54,6 +55,10 @@ function App() {
           <Route exact path="/like" >
             <LikeButton post_id={1} user_id={1} />
           </Route>
+          <Route exact path="/search" >
+            <SearchBar />
+          </Route>
+
         </Switch>
       )}
     </>
