@@ -4,12 +4,13 @@ import sessionReducer from "./session"
 import noteReducer from "./note"
 import postsReducer from './post';
 import likeReducer from './like';
-
+import searchReducer from './search';
 const rootReducer = combineReducers({
   session: sessionReducer,
   post: postsReducer,
   note: noteReducer,
   like: likeReducer,
+  search: searchReducer
 });
 
 
