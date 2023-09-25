@@ -19,6 +19,7 @@ function NoteForm(){
     const post_id_int = parseInt(post_id, 10);
     const [content,setContent] = useState("")
     const [postComments,setPostComments] = useState({})
+    const [change, setChange] = useState(false)
 
 
     const handleSubmit = async (e)=>{
@@ -36,6 +37,7 @@ function NoteForm(){
 
     await dispatch(NoteActions.createNoteThunk(new_note))
     await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
+    setChange(true)
     setContent("")
    
 
@@ -83,6 +85,15 @@ function NoteForm(){
            
         
             <div className="manage-and-comment">
+
+            <div className="manage-image">
+                {values.map((comment,index)=>(
+                    
+                    <img src="https://ih0.redbubble.net/image.618379802.1473/raf,360x360,075,t,fafafa:ca443f4786.jpg" alt="Your Image Alt Text" className="profileimage"/>
+                    
+                
+                ))}
+                </div>
             <div className="comments-container">
                 {values.map((comment, index) => (
                 <div className="comment-items" key={index} id={`item${index}`}>
