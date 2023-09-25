@@ -14,16 +14,14 @@ def count_like(post_id):
     return len(post.likes)
 
 
-
 @likes_bp.route('/post/<int:post_id>', methods=['GET'])
 def get_num_likes(post_id):
-    """
-    helper function to count number of likes
-    """
+
     return jsonify(status='success', likes={'count': count_like(post_id), 'user_liked': False})
 
 
 @likes_bp.route('/post/<int:post_id>', methods=['POST'])
+# @login_required
 def like_post(post_id):
     # check POST functionality by key "function" in JSON from http request body
     function = request.get_json().get('function')
@@ -53,6 +51,7 @@ def like_post(post_id):
 
 
 @likes_bp.route('/post/<int:post_id>', methods=['DELETE'])
+# @login_required
 def unlike_post(post_id):
     post = TextPost.query.get_or_404(post_id)
     user_id = request.get_json().get('user_id')
